@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+  shell:
+    build: ./docker-config/shell
+    hostname: shell
+    privileged: true
+    command: /sbin/init
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.2
+  router:
+    build: ./docker-config/router
+    hostname: router
+    privileged: true
+    command: /sbin/init
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.3
+  node1:
+    build: ./docker-config/node
+    hostname: node1
+    privileged: true
+    command: /sbin/init
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.11
+  node2:
+    build: ./docker-config/node
+    hostname: node2
+    privileged: true
+    command: /sbin/init
+    networks:
+      app_net:
+        ipv4_address: 172.30.0.12
+
+networks:
+  app_net:
+    name: app_net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/24
