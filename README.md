@@ -69,7 +69,7 @@
     ```
 2. ディレクトリ移動
    ```
-   $ cd mysql-docker-compose-examples/innodb-cluster-own/
+   $ cd mysql-docker-compose-examples/
    ```
 3. docker-composeでコンテナを立ち上げる
    ```
