@@ -33,6 +33,14 @@ services:
     networks:
       app_net:
         ipv4_address: 172.30.0.12
+  # node3:
+  #   build: ./docker-config/node
+  #   hostname: node3
+  #   privileged: true
+  #   command: /sbin/init
+  #   networks:
+  #     app_net:
+  #       ipv4_address: 172.30.0.13
 
 networks:
   app_net:

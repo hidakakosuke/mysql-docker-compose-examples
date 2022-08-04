@@ -102,6 +102,8 @@
       2. `create user 'root'@'172.30.0.%' identified by 'root'`
          1. ユーザーを新しく作成するためのコマンド
          2. CREATE USER 'ユーザ名'@'ホスト名' IDENTIFIED BY 'パスワード'
+            1. ホスト名が`172.30.0.%`の理由
+               1. 172.30.0から始まるIPアドレスからログインが可能という意味
       3. `grant all on *.* to 'root'@'172.30.0.%' with grant option;`
          1. 作成したユーザーに対して権限を付与
          2. `grant`
@@ -158,8 +160,9 @@
          1. root@node1インスタンスに接続
       2. `cluster = dba.createCluster('mycluster')`
          1. myclusterという名前のクラスターを作成
+         2. ここで`cluster = dba.createCluster('mycluster', { multiPrimary: true })`と入力するとマルチマスターモードでクラスターが作成される
       3. `cluster.addInstance('root@node2')`
-         1. クラスターにroot@node2インスタンスを追加
+         1. `mycluster`クラスターにroot@node2インスタンスを追加
    4. 作成したクラスターのstatusを確認
       ```
        MySQL  node1:33060+ ssl  JS > cluster.status()
