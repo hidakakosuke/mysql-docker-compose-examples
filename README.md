@@ -77,17 +77,17 @@
    ```
 4. コンテナが立ち上がっていることを確認
    ```
-    docker ps
-    CONTAINER ID   IMAGE                       COMMAND        CREATED          STATUS          PORTS     NAMES
-    3ecb9263cb49   innodb-cluster-own_node2    "/sbin/init"   16 seconds ago   Up 10 seconds             innodb-cluster-own-node2-1
-    634f8a44bc78   innodb-cluster-own_node1    "/sbin/init"   16 seconds ago   Up 10 seconds             innodb-cluster-own-node1-1
-    44dfcdbaeb32   innodb-cluster-own_router   "/sbin/init"   16 seconds ago   Up 10 seconds             innodb-cluster-own-router-1
-    b33dbb5db9ad   innodb-cluster-own_shell    "/sbin/init"   16 seconds ago   Up 10 seconds             innodb-cluster-own-shell-1
+   $ docker ps
+   CONTAINER ID   IMAGE                                  COMMAND        CREATED         STATUS         PORTS     NAMES
+   c44290bfe12c   mysql-docker-compose-examples_node1    "/sbin/init"   3 seconds ago   Up 2 seconds             mysql_node1
+   8c74a45769a1   mysql-docker-compose-examples_router   "/sbin/init"   3 seconds ago   Up 2 seconds             mysql_router
+   abde32c0427a   mysql-docker-compose-examples_node2    "/sbin/init"   3 seconds ago   Up 2 seconds             mysql_node2
+   b933c5caa3de   mysql-docker-compose-examples_shell    "/sbin/init"   3 seconds ago   Up 2 seconds             mysql_shell
    ```
 5. nodeの設定
    1. コンテナに接続
       ```
-      $ docker exec -it innodb-cluster-own-node1-1 /bin/bash
+      $ docker exec -it mysql_node1 /bin/bash
       ```
    2. mysqlに接続しユーザ作成
       ```
@@ -122,7 +122,7 @@
 6. shellの設定
    1. コンテナに接続
       ```
-      $ docker exec -it innodb-cluster-own-shell-1 /bin/bash
+      $ docker exec -it mysql_shell /bin/bash
       ```
    2. MySQL Group Replication の各インスタンスの設定
       ```
@@ -204,7 +204,7 @@
 7. routeの設定
    1. コンテナに接続
       ```
-      $ docker exec -it innodb-cluster-own-router-1 /bin/bash
+      $ docker exec -it mysql_router /bin/bash
       ```
    2. clusterを設定
       ```
